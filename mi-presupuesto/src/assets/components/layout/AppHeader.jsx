@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ThemeToggle from "../ui/ThemeToggle";
 
 export default function AppHeader() {
   return (
@@ -18,6 +19,7 @@ export default function AppHeader() {
         <Link to="/resumen">Resumen</Link>
         <Link to="/ajustes">Ajustes</Link>
       </nav>
+       <ThemeToggle />
     </header>
   );
 }
