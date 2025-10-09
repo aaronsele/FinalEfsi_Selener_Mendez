@@ -1,0 +1,46 @@
+/* src/theme/global.css */
+
+:root {
+  /* 🎨 Colores base */
+  --color-primary: #1e40af; /* azul fuerte */
+  --color-secondary: #3b82f6; /* azul claro */
+  --color-accent: #f43f5e; /* rosa fuerte */
+  --color-bg: #f9fafb; /* gris muy claro */
+  --color-surface: #ffffff;
+  --color-text: #1e293b;
+  --color-muted: #94a3b8;
+
+  /* 💠 Espaciado y estilo */
+  --radius: 12px;
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --transition: 0.2s ease;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter", system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+h1, h2, h3 {
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+button {
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+a {
+  color: var(--color-secondary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
