@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BudgetProvider } from "./context/BudgetContext";
 import AppHeader from "./assets/components/layout/AppHeader";
+import AppFooter from "./assets/components/layout/AppFooter"
 import MovementsPage from "./pages/MovementsPage";
 import AddMovementPage from "./pages/AddMovementPage";
 import EditMovementPage from "./pages/EditMovementPage";
@@ -21,6 +22,7 @@ function App() {
             <Route path="/ajustes" element={<SettingsPage />} />
           </Routes>
         </main>
+        <AppFooter/>
       </BudgetProvider>
     </BrowserRouter>
   );

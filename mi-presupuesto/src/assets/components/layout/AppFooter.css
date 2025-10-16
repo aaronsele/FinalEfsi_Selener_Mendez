@@ -1,0 +1,40 @@
+.app-footer {
+    width: 100%;
+    text-align: center;
+    padding: 12px 20px;
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    border-top: 1px solid var(--footer-border);
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .footer-signature {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.8rem;
+    opacity: 0.8;
+  }
+  
+  /* Modo claro */
+  :root[data-theme="light"] {
+    --footer-bg: #f9f9f9;
+    --footer-text: #333;
+    --footer-border: #ddd;
+  }
+  
+  /* Modo oscuro */
+  :root[data-theme="dark"] {
+    --footer-bg: #1f1f1f;
+    --footer-text: #f1f1f1;
+    --footer-border: #333;
+  }
+  
+  /* Si querés dejarlo fijo abajo (opcional) */
+  .app-footer.fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
