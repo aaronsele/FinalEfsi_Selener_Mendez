@@ -1,4 +1,5 @@
 import { useBudget } from "../context/BudgetContext";
+import "./MovementsPage.css";
 
 export default function MovementsPage() {
   const { movements } = useBudget();
