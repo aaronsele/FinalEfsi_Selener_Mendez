@@ -1,17 +1,9 @@
 import { Link } from "react-router-dom";
-import ThemeToggle from "../ui/ThemeToggle";
+import "./AppHeader.css";
 
 export default function AppHeader() {
   return (
-    <header
-      style={{
-        backgroundColor: "#1e293b",
-        color: "white",
-        padding: "1rem",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
+    <header>
       <h1>💸 Mi Presupuesto</h1>
       <nav style={{ display: "flex", gap: "1rem" }}>
         <Link to="/">Inicio</Link>
@@ -19,7 +11,6 @@ export default function AppHeader() {
         <Link to="/resumen">Resumen</Link>
         <Link to="/ajustes">Ajustes</Link>
       </nav>
-       <ThemeToggle />
     </header>
   );
 }
