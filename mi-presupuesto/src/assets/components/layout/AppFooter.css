@@ -25,12 +25,11 @@
   
   /* Modo oscuro */
   :root[data-theme="dark"] {
-    --footer-bg: #1f1f1f;
+    --footer-bg: #0f172a;
     --footer-text: #f1f1f1;
     --footer-border: #333;
   }
   
-  /* Si querés dejarlo fijo abajo (opcional) */
   .app-footer.fixed {
     position: fixed;
     bottom: 0;

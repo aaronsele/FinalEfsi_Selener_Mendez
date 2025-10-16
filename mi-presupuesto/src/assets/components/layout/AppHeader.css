@@ -1,4 +1,4 @@
-.app-header {
+header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -9,34 +9,46 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
-  .app-header h1 {
+  /* Título */
+  header h1 {
     font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0;
   }
   
-  .app-header .header-left {
+  /* Navbar */
+  nav {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: flex-end;
+    gap: 1.2rem;
   }
   
-  .app-header .header-right {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  /* Links */
+  nav a {
+    text-decoration: none;
+    color: var(--header-text);
+    font-weight: 500;
+    transition: color 0.3s ease;
   }
   
- 
+  nav a:hover {
+    color: var(--header-accent);
+  }
+  
+  /* 🌞 Tema claro */
   :root[data-theme="light"] {
     --header-bg: #f9f9f9;
     --header-text: #222;
     --header-border: #ddd;
+    --header-accent: #0066ff;
   }
   
- 
+  /* 🌙 Tema oscuro */
   :root[data-theme="dark"] {
-    --header-bg: #1f1f1f;
+    --header-bg: #0f172a; /* azul oscuro que pediste */
     --header-text: #f1f1f1;
-    --header-border: #333;
+    --header-border: #1e293b;
+    --header-accent: #4dabf7;
   }
+  
