@@ -1,8 +1,10 @@
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useBudget } from "../../context/BudgetContext";
+import { useBudget } from "../../../context/BudgetContext";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import "./MovementForm.css";
+
 
 export default function MovementForm({ initialValues }) {
   const { addMovement } = useBudget();
