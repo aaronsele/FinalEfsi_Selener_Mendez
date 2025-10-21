@@ -23,4 +23,13 @@ export const MOCK_MOVEMENTS = [
     monto: 4000,
     fecha: "2025-10-03",
   },
+
+  {
+    id:"10",
+    descripcion: "Publicidades",
+    categoria: "Trabajo",
+    tipo: "ingreso",
+    monto: 128600,
+    fecha: "2026-01-22"
+  },
 ];
