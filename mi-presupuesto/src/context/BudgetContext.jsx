@@ -13,9 +13,15 @@ export const BudgetProvider = ({ children }) => {
     localStorage.removeItem("movements_v1");
     setMovements(MOCK_MOVEMENTS);
   };
+  const updateMovement = (id, updatedData) => {
+    setMovements((prev) =>
+      prev.map((m) => (m.id === id ? { ...m, ...updatedData } : m))
+    );
+  };
+  
 
   return (
-    <BudgetContext.Provider value={{ movements, addMovement, deleteMovement, resetData }}>
+    <BudgetContext.Provider value={{ movements, addMovement, deleteMovement, resetData, updateMovement }}>
       {children}
     </BudgetContext.Provider>
   );
