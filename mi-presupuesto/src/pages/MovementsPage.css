@@ -1,47 +1,176 @@
 .movements-page {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 24px;
-    background-color: var(--page-bg);
-    color: var(--page-text);
-    min-height: 100vh;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .movements-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .movements-header h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-  }
-  
-  .movements-content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 100vh;
+  background-color: var(--page-bg);
+  color: var(--page-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-  .movements-empty {
-    text-align: center;
-    font-style: italic;
-    opacity: 0.7;
-    padding: 20px 0;
-  }
-  
+.movements-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
 
-  :root[data-theme="light"] {
-    --page-bg: #fafafa;
-    --page-text: #222;
-  }
-  
-  :root[data-theme="dark"] {
-    --page-bg: #121212;
-    --page-text: #f5f5f5;
-  }
-  
+.movements-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.movements-filters input,
+.movements-filters select {
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid #bbb;
+  font-size: 0.95rem;
+  background-color: var(--card-bg);
+  color: var(--page-text);
+  transition: all 0.25s ease, box-shadow 0.25s ease;
+}
+
+.movements-filters input:focus,
+.movements-filters select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0,123,255,0.3);
+  outline: none;
+}
+
+.movements-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.movements-empty {
+  text-align: center;
+  font-style: italic;
+  opacity: 0.7;
+  padding: 20px 0;
+}
+
+.movement-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+  background-color: var(--card-bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  flex-wrap: wrap;
+}
+
+.movement-item:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  background-color: rgba(255,255,255,0.95);
+}
+
+.movement-item > div:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.movement-item strong {
+  font-size: 1.05rem;
+}
+
+.movement-item span {
+  font-weight: 600;
+}
+
+.movement-item .gasto {
+  color: #dc3545;
+}
+
+.movement-item .ingreso {
+  color: #28a745;
+}
+
+.movement-item button {
+  margin-left: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.movement-item button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.movement-item button.edit { background: linear-gradient(135deg, #ffc107, #ffdd57); color: #222; }
+.movement-item button.delete { background: linear-gradient(135deg, #dc3545, #e6676b); color: #fff; }
+.movement-item button.save { background: linear-gradient(135deg, #28a745, #51c465); color: #fff; }
+.movement-item button.cancel { background: linear-gradient(135deg, #6c757d, #9a9fa5); color: #fff; }
+
+.movement-item.editing {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.movement-item.editing .edit-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  max-width: 100%;
+}
+
+.movement-item.editing .edit-fields input,
+.movement-item.editing .edit-fields select {
+  flex: 1 1 120px;
+  max-width: 160px;
+  font-size: 0.9rem;
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: 1px solid #bbb;
+  background-color: var(--card-bg);
+  color: var(--page-text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.movement-item.editing .edit-fields input:focus,
+.movement-item.editing .edit-fields select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0,123,255,0.35);
+  outline: none;
+}
+
+.movement-item.editing .edit-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+:root[data-theme="light"] {
+  --page-bg: #f8f9fa;
+  --page-text: #212529;
+  --card-bg: #fff;
+}
+
+:root[data-theme="dark"] {
+  --page-bg: #121212;
+  --page-text: #f5f5f5;
+  --card-bg: #1e1e1e;
+}
+
+body,
+:root[data-theme="light"],
+:root[data-theme="dark"] {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
