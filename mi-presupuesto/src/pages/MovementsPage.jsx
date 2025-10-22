@@ -13,6 +13,29 @@ export default function MovementsPage() {
     fecha: "",
   });
 
+  // 🎛️ Filtros
+  const [searchText, setSearchText] = useState("");
+  const [filterCategory, setFilterCategory] = useState("");
+  const [filterType, setFilterType] = useState("");
+
+  // 🔍 Filtrar movimientos
+  const filteredMovements = movements.filter((m) => {
+    const matchText = m.descripcion
+      .toLowerCase()
+      .includes(searchText.toLowerCase());
+    const matchCategory = filterCategory
+      ? m.categoria === filterCategory
+      : true;
+
+    // 🧩 comparo todo en minúsculas para evitar errores
+    const matchType = filterType
+      ? m.tipo.toLowerCase() === filterType.toLowerCase()
+      : true;
+
+    return matchText && matchCategory && matchType;
+  });
+
+  // ✏️ Edición
   const handleEditClick = (movement) => {
     setEditingId(movement.id);
     setEditedData({
@@ -42,12 +65,43 @@ export default function MovementsPage() {
         <h2>Listado de movimientos</h2>
       </div>
 
-      {movements.length === 0 ? (
+      {/* 🎚️ Barra de búsqueda y filtros */}
+      <div className="movements-filters">
+        <input
+          type="text"
+          placeholder="Buscar por descripción..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+
+        <select
+          value={filterCategory}
+          onChange={(e) => setFilterCategory(e.target.value)}
+        >
+          <option value="">Todas las categorías</option>
+          {[...new Set(movements.map((m) => m.categoria))].map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+        </select>
+
+        <select
+          value={filterType}
+          onChange={(e) => setFilterType(e.target.value)}
+        >
+          <option value="">Todos los tipos</option>
+          <option value="gasto">Gasto</option>
+          <option value="ingreso">Ingreso</option>
+        </select>
+      </div>
+
+      {filteredMovements.length === 0 ? (
         <p className="movements-empty">No hay movimientos registrados.</p>
       ) : (
         <div className="movements-content">
           <ul className="movements-list">
-            {movements.map((m) => (
+            {filteredMovements.map((m) => (
               <li key={m.id} className="movement-item">
                 {editingId === m.id ? (
                   <>
@@ -63,8 +117,6 @@ export default function MovementsPage() {
                       onChange={handleChange}
                       placeholder="Categoría"
                     />
-
-                    {/* 🔽 Select para tipo (Gasto o Ingreso) */}
                     <select
                       name="tipo"
                       value={editedData.tipo}
@@ -74,7 +126,6 @@ export default function MovementsPage() {
                       <option value="Gasto">Gasto</option>
                       <option value="Ingreso">Ingreso</option>
                     </select>
-
                     <input
                       name="monto"
                       type="number"
@@ -88,7 +139,6 @@ export default function MovementsPage() {
                       value={editedData.fecha}
                       onChange={handleChange}
                     />
-
                     <button onClick={() => handleSave(m.id)}>💾 Guardar</button>
                     <button onClick={() => setEditingId(null)}>❌ Cancelar</button>
                   </>
@@ -96,7 +146,18 @@ export default function MovementsPage() {
                   <>
                     <div>
                       <strong>{m.descripcion}</strong> — {m.categoria} —{" "}
-                      {m.tipo} — ${m.monto} — {m.fecha}
+                      <span
+                        style={{
+                          color:
+                            m.tipo.toLowerCase() === "gasto"
+                              ? "red"
+                              : "green",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        {m.tipo}
+                      </span>{" "}
+                      — ${m.monto} — {m.fecha}
                     </div>
                     <div>
                       <button onClick={() => handleEditClick(m)}>✏️ Editar</button>
