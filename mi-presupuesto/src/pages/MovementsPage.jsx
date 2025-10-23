@@ -17,22 +17,40 @@ export default function MovementsPage() {
   const [searchText, setSearchText] = useState("");
   const [filterCategory, setFilterCategory] = useState("");
   const [filterType, setFilterType] = useState("");
+  const [minAmount, setMinAmount] = useState("");
+  const [maxAmount, setMaxAmount] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   // 🔍 Filtrar movimientos
   const filteredMovements = movements.filter((m) => {
     const matchText = m.descripcion
       .toLowerCase()
       .includes(searchText.toLowerCase());
+
     const matchCategory = filterCategory
       ? m.categoria === filterCategory
       : true;
 
-    // 🧩 comparo todo en minúsculas para evitar errores
     const matchType = filterType
       ? m.tipo.toLowerCase() === filterType.toLowerCase()
       : true;
 
-    return matchText && matchCategory && matchType;
+    const matchMinAmount = minAmount ? m.monto >= Number(minAmount) : true;
+    const matchMaxAmount = maxAmount ? m.monto <= Number(maxAmount) : true;
+
+    const matchStartDate = startDate ? m.fecha >= startDate : true;
+    const matchEndDate = endDate ? m.fecha <= endDate : true;
+
+    return (
+      matchText &&
+      matchCategory &&
+      matchType &&
+      matchMinAmount &&
+      matchMaxAmount &&
+      matchStartDate &&
+      matchEndDate
+    );
   });
 
   // ✏️ Edición
@@ -94,6 +112,32 @@ export default function MovementsPage() {
           <option value="gasto">Gasto</option>
           <option value="ingreso">Ingreso</option>
         </select>
+
+        {/* 💰 Filtros por monto */}
+        <input
+          type="number"
+          placeholder="Monto mínimo"
+          value={minAmount}
+          onChange={(e) => setMinAmount(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Monto máximo"
+          value={maxAmount}
+          onChange={(e) => setMaxAmount(e.target.value)}
+        />
+
+        {/* 📅 Filtros por fecha */}
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
       </div>
 
       {filteredMovements.length === 0 ? (
