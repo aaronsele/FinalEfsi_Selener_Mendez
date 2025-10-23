@@ -8,7 +8,7 @@ const AppFooter = () => {
     <footer className="app-footer">
       <p>© {year} Mi Presupuesto — Todos los derechos reservados</p>
       <span className="footer-signature">
-        Hecho por Garcia, Mendez y Selener 
+        Hecho por García, Mendez y Selener.
       </span>
     </footer>
   );

@@ -1,0 +1,87 @@
+.summary-page {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .summary-page h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .no-data {
+    color: #888;
+    font-size: 1.1rem;
+  }
+  
+  .chart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .chart-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .summary-page {
+    padding: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    color: #222;
+  }
+  
+  .summary-page h2 {
+    text-align: left;
+    margin-bottom: 18px;
+    font-size: 1.6rem;
+  }
+  
+  .summary-empty {
+    color: #777;
+    font-style: italic;
+  }
+  
+  /* layout para contener ambas gráficas */
+  .charts-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  
+  /* en pantallas grandes las mostramos lado a lado */
+  @media (min-width: 900px) {
+    .charts-row {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+  
+  .chart-card {
+    background: #fafafa;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* mejorar la leyenda/tooltip en pantallas pequeñas */
+  .chart-card canvas {
+    max-width: 100%;
+  }
+  
+  /* pie y bar tienen espacio para respirar */
+  .footnote {
+    margin-top: 12px;
+    color: #666;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+  
