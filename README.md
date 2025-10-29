@@ -15,4 +15,6 @@ Thiago Martín García Salmaso: Backend, ajustes
 
 Los 3 estuvimos trabajando juntos a lo largo del proyecto
 
+Link a Deploy en Vercel: https://final-efsi-selener-mendez-lz9f.vercel.app/
+
 
